@@ -27,6 +27,8 @@ public class GeneratePreprocessedDataSetCommand implements Runnable {
     @SneakyThrows
     @Override
     public void run() {
+        log.info("Generating preprocessed dataset...");
+
         try (var inputWordsReader = new FileInputWordsReader(wordsFilePath)) {
             var outputDatasetWriter = new FileOutputDatasetWriter(dataSetOutputFilePath);
 
@@ -34,5 +36,7 @@ public class GeneratePreprocessedDataSetCommand implements Runnable {
 
             preprocessedDataSetGenerator.generate();
         }
+
+        log.info("Finished generating preprocessed dataset.");
     }
 }
