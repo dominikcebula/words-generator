@@ -1,6 +1,10 @@
 package com.dominikcebula.words.generator.cli.commands;
 
+import com.dominikcebula.words.generator.application.dataset.generator.PreprocessedDataSetGenerator;
 import com.dominikcebula.words.generator.cli.common.HelpOption;
+import com.dominikcebula.words.generator.io.FileInputWordsReader;
+import com.dominikcebula.words.generator.io.FileOutputDatasetWriter;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Mixin;
@@ -20,8 +24,15 @@ public class GeneratePreprocessedDataSetCommand implements Runnable {
     @Option(names = "-data-set-output-file-path", description = "Path to where preprocessed data set will be stored")
     private Path dataSetOutputFilePath;
 
+    @SneakyThrows
     @Override
     public void run() {
-        // TODO
+        try (var inputWordsReader = new FileInputWordsReader(wordsFilePath)) {
+            var outputDatasetWriter = new FileOutputDatasetWriter(dataSetOutputFilePath);
+
+            var preprocessedDataSetGenerator = new PreprocessedDataSetGenerator(inputWordsReader, outputDatasetWriter);
+
+            preprocessedDataSetGenerator.generate();
+        }
     }
 }

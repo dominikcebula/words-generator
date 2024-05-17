@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="Generate Dataset" type="Application" factoryName="Application">
+        <option name="MAIN_CLASS_NAME" value="com.dominikcebula.words.generator.Application"/>
+        <module name="words-generator"/>
+        <option name="PROGRAM_PARAMETERS"
+                value="generate-dataset -words-file-path=data/words_alpha.txt -data-set-output-file-path=data/words_alpha_dataset.txt"/>
+        <extension name="coverage">
+            <pattern>
+                <option name="PATTERN" value="com.dominikcebula.words.generator.*"/>
+                <option name="ENABLED" value="true"/>
+            </pattern>
+        </extension>
+        <method v="2">
+            <option name="Make" enabled="true"/>
+        </method>
+    </configuration>
+</component>
