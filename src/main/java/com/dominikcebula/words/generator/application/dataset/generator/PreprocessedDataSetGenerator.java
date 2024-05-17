@@ -6,11 +6,16 @@ import com.dominikcebula.words.generator.application.domain.WordsMap;
 import com.dominikcebula.words.generator.application.domain.WordsMapKey;
 import com.dominikcebula.words.generator.application.domain.WordsMapKeyFactory;
 import com.dominikcebula.words.generator.application.domain.WordsMapValue;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class PreprocessedDataSetGenerator {
     private final WordsMapKeyFactory wordsMapKeyFactory = new WordsMapKeyFactory();
 
-    public void generate(InputWordsReader inputWordsReader, OutputDatasetWriter outputDatasetWriter) {
+    private final InputWordsReader inputWordsReader;
+    private final OutputDatasetWriter outputDatasetWriter;
+
+    public void generate() {
         WordsMap wordsMap = new WordsMap();
 
         while (inputWordsReader.hasNextWord()) {
