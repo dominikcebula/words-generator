@@ -6,7 +6,9 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Mixin;
 import picocli.CommandLine.Option;
 
-@Command(name = "create", description = "Creates named value with given id and value")
+import java.nio.file.Path;
+
+@Command(name = "generate-dataset", description = "Creates named value with given id and value")
 @Slf4j
 public class GeneratePreprocessedDataSetCommand implements Runnable {
 
@@ -14,9 +16,9 @@ public class GeneratePreprocessedDataSetCommand implements Runnable {
     private HelpOption helpOption;
 
     @Option(names = "-words-file-path", description = "Path of input text file with words dictionary", required = true)
-    private String wordsFilePath;
+    private Path wordsFilePath;
     @Option(names = "-data-set-output-file-path", description = "Path to where preprocessed data set will be stored")
-    private String dataSetOutputFilePath;
+    private Path dataSetOutputFilePath;
 
     @Override
     public void run() {
