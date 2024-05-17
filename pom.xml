@@ -89,7 +89,7 @@
                             <finalName>${project.artifactId}</finalName>
                             <archive>
                                 <manifest>
-                                    <mainClass>com.dominikcebula.words.generator.Application</mainClass>
+                                    <mainClass>com.dominikcebula.words.generator.cli.Application</mainClass>
                                     <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                                 </manifest>
                             </archive>

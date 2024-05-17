@@ -1,4 +1,4 @@
-package com.dominikcebula.words.generator;
+package com.dominikcebula.words.generator.cli;
 
 import com.dominikcebula.words.generator.cli.parser.CommandLineParser;
 import picocli.CommandLine;

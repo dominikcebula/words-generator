@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
     <configuration default="false" name="Generate Dataset" type="Application" factoryName="Application">
-        <option name="MAIN_CLASS_NAME" value="com.dominikcebula.words.generator.Application"/>
+        <option name="MAIN_CLASS_NAME" value="com.dominikcebula.words.generator.cli.Application"/>
         <module name="words-generator"/>
         <option name="PROGRAM_PARAMETERS"
                 value="generate-dataset -words-file-path=data/words_alpha.txt -data-set-output-file-path=data/words_alpha_dataset.txt"/>
