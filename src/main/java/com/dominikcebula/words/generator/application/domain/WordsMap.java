@@ -11,6 +11,10 @@ public class WordsMap {
                 .add(wordValue);
     }
 
+    public WordsSet get(WordKey wordKey) {
+        return wordsData.getOrDefault(wordKey, new WordsSet());
+    }
+
     public String textRepresentation() {
         StringBuilder stringBuilder = new StringBuilder();
 
