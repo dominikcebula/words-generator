@@ -8,13 +8,13 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class WordsMapValueTest {
+class WordValueTest {
     @ParameterizedTest
     @MethodSource("provideTestData")
     void shouldCreateTextRepresentation(String wordSetValueString, String textRepresentation) {
-        WordsMapValue wordsMapValue = new WordsMapValue(wordSetValueString);
+        WordValue wordValue = new WordValue(wordSetValueString);
 
-        assertThat(wordsMapValue.textRepresentation())
+        assertThat(wordValue.textRepresentation())
                 .isEqualTo(textRepresentation);
     }
 

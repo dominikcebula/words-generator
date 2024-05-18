@@ -5,13 +5,13 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class WordsMapKeyFactory {
-    public WordsMapKey createFromWord(String word) {
+public class WordKeyFactory {
+    public WordKey createFromWord(String word) {
         Map<Character, Long> characterCountMap = getCharacterCountMap(word);
         Map<Character, Long> characterCountMapSortedByKey = getCharacterCountMapSortedByKey(characterCountMap);
         String wordKey = getWordKey(characterCountMapSortedByKey);
 
-        return new WordsMapKey(wordKey);
+        return new WordKey(wordKey);
     }
 
     private Map<Character, Long> getCharacterCountMap(String word) {

@@ -1,27 +1,25 @@
 package com.dominikcebula.words.generator.application.domain;
 
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class WordsMap {
-    private final Map<WordsMapKey, Set<WordsMapValue>> wordsData = new LinkedHashMap<>();
+    private final Map<WordKey, WordsSet> wordsData = new LinkedHashMap<>();
 
-    public void add(WordsMapKey wordsMapKey, WordsMapValue wordsMapValue) {
-        wordsData.computeIfAbsent(wordsMapKey, key -> new LinkedHashSet<>())
-                .add(wordsMapValue);
+    public void add(WordKey wordKey, WordValue wordValue) {
+        wordsData.computeIfAbsent(wordKey, key -> new WordsSet())
+                .add(wordValue);
     }
 
     public String textRepresentation() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (WordsMapKey wordsMapKey : wordsData.keySet()) {
-            stringBuilder.append(wordsMapKey.textRepresentation());
+        for (WordKey wordKey : wordsData.keySet()) {
+            stringBuilder.append(wordKey.textRepresentation());
             stringBuilder.append("\n");
 
-            for (WordsMapValue wordsMapValue : wordsData.get(wordsMapKey)) {
-                stringBuilder.append(wordsMapValue.textRepresentation());
+            for (WordValue wordValue : wordsData.get(wordKey).getWordValues()) {
+                stringBuilder.append(wordValue.textRepresentation());
                 stringBuilder.append("\n");
             }
         }

@@ -2,15 +2,15 @@ package com.dominikcebula.words.generator.application.dataset.generator;
 
 import com.dominikcebula.words.generator.application.dataset.generator.port.InputWordsReader;
 import com.dominikcebula.words.generator.application.dataset.generator.port.OutputDatasetWriter;
+import com.dominikcebula.words.generator.application.domain.WordKey;
+import com.dominikcebula.words.generator.application.domain.WordKeyFactory;
+import com.dominikcebula.words.generator.application.domain.WordValue;
 import com.dominikcebula.words.generator.application.domain.WordsMap;
-import com.dominikcebula.words.generator.application.domain.WordsMapKey;
-import com.dominikcebula.words.generator.application.domain.WordsMapKeyFactory;
-import com.dominikcebula.words.generator.application.domain.WordsMapValue;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class PreprocessedDataSetGenerator {
-    private final WordsMapKeyFactory wordsMapKeyFactory = new WordsMapKeyFactory();
+    private final WordKeyFactory wordKeyFactory = new WordKeyFactory();
 
     private final InputWordsReader inputWordsReader;
     private final OutputDatasetWriter outputDatasetWriter;
@@ -21,9 +21,9 @@ public class PreprocessedDataSetGenerator {
         while (inputWordsReader.hasNextWord()) {
             String word = inputWordsReader.getNextWord();
 
-            WordsMapKey wordsMapKey = wordsMapKeyFactory.createFromWord(word);
+            WordKey wordKey = wordKeyFactory.createFromWord(word);
 
-            wordsMap.add(wordsMapKey, new WordsMapValue(word));
+            wordsMap.add(wordKey, new WordValue(word));
         }
 
         outputDatasetWriter.write(wordsMap.textRepresentation());

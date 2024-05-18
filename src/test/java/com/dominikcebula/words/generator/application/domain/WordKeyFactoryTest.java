@@ -8,16 +8,16 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class WordsMapKeyFactoryTest {
+class WordKeyFactoryTest {
 
-    private final WordsMapKeyFactory wordsMapKeyFactory = new WordsMapKeyFactory();
+    private final WordKeyFactory wordKeyFactory = new WordKeyFactory();
 
     @ParameterizedTest
     @MethodSource("provideWordKeyTestData")
     void shouldCreateWordKey(String inputWord, String expectedWordKey) {
-        WordsMapKey wordsMapKey = wordsMapKeyFactory.createFromWord(inputWord);
+        WordKey wordKey = wordKeyFactory.createFromWord(inputWord);
 
-        assertThat(wordsMapKey.value()).isEqualTo(expectedWordKey);
+        assertThat(wordKey.value()).isEqualTo(expectedWordKey);
     }
 
     private static Stream<Arguments> provideWordKeyTestData() {
