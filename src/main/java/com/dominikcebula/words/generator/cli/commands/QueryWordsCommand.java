@@ -3,13 +3,13 @@ package com.dominikcebula.words.generator.cli.commands;
 import com.dominikcebula.words.generator.application.dataset.loader.PreprocessedDataSetLoader;
 import com.dominikcebula.words.generator.application.domain.WordsMap;
 import com.dominikcebula.words.generator.application.words.query.WordsQuery;
-import com.dominikcebula.words.generator.cli.io.ConsoleOutputDataDisplay;
 import com.dominikcebula.words.generator.io.FileInputReader;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import picocli.CommandLine;
 
 import java.nio.file.Path;
+import java.util.List;
 
 @CommandLine.Command(name = "query-words", description = "Queries for possible words that can be created from a given set of characters")
 @Slf4j
@@ -29,10 +29,11 @@ public class QueryWordsCommand implements Runnable {
             log.info("Loaded preprocessed words dataset.");
 
             log.info("Querying for possible words...");
-            var consoleOutputDataDisplay = new ConsoleOutputDataDisplay();
-            var wordsQuery = new WordsQuery(wordsMap, consoleOutputDataDisplay);
-            wordsQuery.queryPossibleWords(characters);
+            var wordsQuery = new WordsQuery(wordsMap);
+            List<String> possibleWords = wordsQuery.queryPossibleWords(characters);
             log.info("Finished Querying for possible words.");
+
+            possibleWords.forEach(System.out::println);
         }
     }
 }
