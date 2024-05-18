@@ -11,7 +11,7 @@ class WordsMapTest {
 
         wordsMap.add(new WordKey("1c1g2i1l1o2s1t"), new WordValue("logistics"));
 
-        assertThat(wordsMap.textRepresentation())
+        assertThat(wordsMap.toLinesValues())
                 .isEqualTo("""
                         K 1c1g2i1l1o2s1t
                         V logistics
@@ -26,7 +26,7 @@ class WordsMapTest {
         wordsMap.add(new WordKey("1a2b3c"), new WordValue("cccbba"));
         wordsMap.add(new WordKey("1a2b3c"), new WordValue("bbccca"));
 
-        assertThat(wordsMap.textRepresentation())
+        assertThat(wordsMap.toLinesValues())
                 .isEqualTo("""
                         K 1a2b3c
                         V abbccc
@@ -43,7 +43,7 @@ class WordsMapTest {
         wordsMap.add(new WordKey("2b"), new WordValue("bb"));
         wordsMap.add(new WordKey("3c"), new WordValue("ccc"));
 
-        assertThat(wordsMap.textRepresentation())
+        assertThat(wordsMap.toLinesValues())
                 .isEqualTo("""
                         K 1a
                         V a
@@ -71,7 +71,7 @@ class WordsMapTest {
         wordsMap.add(new WordKey("1e2f3g4h"), new WordValue("gggeffhhhh"));
         wordsMap.add(new WordKey("1e2f3g4h"), new WordValue("eggghhhhff"));
 
-        assertThat(wordsMap.textRepresentation())
+        assertThat(wordsMap.toLinesValues())
                 .isEqualTo("""
                         K 1a2b
                         V abb
@@ -93,6 +93,6 @@ class WordsMapTest {
     void shouldReturnEmptyStringWhenNoDataAddedToMap() {
         WordsMap wordsMap = new WordsMap();
 
-        assertThat(wordsMap.textRepresentation()).isEmpty();
+        assertThat(wordsMap.toLinesValues()).isEmpty();
     }
 }

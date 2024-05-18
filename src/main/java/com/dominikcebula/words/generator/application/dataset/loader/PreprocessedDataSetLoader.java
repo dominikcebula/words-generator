@@ -17,9 +17,9 @@ public class PreprocessedDataSetLoader {
         while (inputDataSetReader.hasNextLine()) {
             String dataLine = inputDataSetReader.getNextLine();
 
-            if (WordKey.isWordKey(dataLine)) {
+            if (WordKey.isWordKeyLine(dataLine)) {
                 currentKey = WordKey.fromLineValue(dataLine);
-            } else if (WordValue.isWordValue(dataLine)) {
+            } else if (WordValue.isWordValueLine(dataLine)) {
                 WordValue wordValue = WordValue.fromLineValue(dataLine);
 
                 if (currentKey == null)

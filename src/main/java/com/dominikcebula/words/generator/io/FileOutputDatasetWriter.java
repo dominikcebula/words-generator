@@ -13,7 +13,7 @@ public class FileOutputDatasetWriter implements OutputDatasetWriter {
 
     @SneakyThrows
     @Override
-    public void write(String textRepresentation) {
-        Files.writeString(dataSetOutputFilePath, textRepresentation);
+    public void write(String lineValue) {
+        Files.writeString(dataSetOutputFilePath, lineValue);
     }
 }

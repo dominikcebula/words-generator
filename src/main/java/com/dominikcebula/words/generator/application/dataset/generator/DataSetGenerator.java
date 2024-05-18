@@ -26,6 +26,6 @@ public class DataSetGenerator {
             wordsMap.add(wordKey, new WordValue(word));
         }
 
-        outputDatasetWriter.write(wordsMap.textRepresentation());
+        outputDatasetWriter.write(wordsMap.toLinesValues());
     }
 }

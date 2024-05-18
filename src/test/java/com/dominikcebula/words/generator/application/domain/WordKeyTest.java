@@ -10,19 +10,47 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class WordKeyTest {
     @ParameterizedTest
-    @MethodSource("provideTestData")
-    void shouldCreateTextRepresentation(String keyValue, String textRepresentation) {
+    @MethodSource("wordKeysWithLineValues")
+    void shouldCreateToLineValue(String keyValue, String lineValue) {
         WordKey wordKey = new WordKey(keyValue);
 
-        assertThat(wordKey.textRepresentation())
-                .isEqualTo(textRepresentation);
+        assertThat(wordKey.toLineValue())
+                .isEqualTo(lineValue);
     }
 
-    private static Stream<Arguments> provideTestData() {
+    @ParameterizedTest
+    @MethodSource("wordKeysWithLineValues")
+    void shouldCreateWordKeyFromLineValue(String keyValue, String lineValue) {
+        WordKey wordKey = WordKey.fromLineValue(lineValue);
+
+        assertThat(wordKey.value())
+                .isEqualTo(keyValue);
+    }
+
+    @ParameterizedTest
+    @MethodSource("wordLineValues")
+    void shouldDetectWordKeys(String lineValue, boolean expectedIsLineValue) {
+        assertThat(WordKey.isWordKeyLine(lineValue))
+                .isEqualTo(expectedIsLineValue);
+    }
+
+    private static Stream<Arguments> wordKeysWithLineValues() {
         return Stream.of(
                 Arguments.of("1c1g2i1l1o2s1t", "K 1c1g2i1l1o2s1t"),
                 Arguments.of("3e1n1r1u1v", "K 3e1n1r1u1v"),
                 Arguments.of("1a1e1g1i1k1m1n1r1t", "K 1a1e1g1i1k1m1n1r1t")
+        );
+    }
+
+    private static Stream<Arguments> wordLineValues() {
+        return Stream.of(
+                Arguments.of("K 1c1g2i1l1o2s1t", true),
+                Arguments.of("K 3e1n1r1u1v", true),
+                Arguments.of("K 1a1e1g1i1k1m1n1r1t", true),
+                Arguments.of("K1c1g2i1l1o2s1t", false),
+                Arguments.of("1c1g2i1l1o2s1t", false),
+                Arguments.of(" ", false),
+                Arguments.of("", false)
         );
     }
 }

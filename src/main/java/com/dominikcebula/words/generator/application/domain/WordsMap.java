@@ -15,15 +15,15 @@ public class WordsMap {
         return wordsData.getOrDefault(wordKey, new WordsSet());
     }
 
-    public String textRepresentation() {
+    public String toLinesValues() {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (WordKey wordKey : wordsData.keySet()) {
-            stringBuilder.append(wordKey.textRepresentation());
+            stringBuilder.append(wordKey.toLineValue());
             stringBuilder.append("\n");
 
             for (WordValue wordValue : wordsData.get(wordKey).getWordValues()) {
-                stringBuilder.append(wordValue.textRepresentation());
+                stringBuilder.append(wordValue.toLineValue());
                 stringBuilder.append("\n");
             }
         }

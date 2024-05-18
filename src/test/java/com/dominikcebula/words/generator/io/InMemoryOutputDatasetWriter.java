@@ -6,8 +6,8 @@ public class InMemoryOutputDatasetWriter implements OutputDatasetWriter {
     private String content;
 
     @Override
-    public void write(String textRepresentation) {
-        content = textRepresentation;
+    public void write(String lineValue) {
+        content = lineValue;
     }
 
     public String getContent() {

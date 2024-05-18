@@ -11,11 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 class WordValueTest {
     @ParameterizedTest
     @MethodSource("provideTestData")
-    void shouldCreateTextRepresentation(String wordSetValueString, String textRepresentation) {
+    void shouldCreateToLineValue(String wordSetValueString, String lineValue) {
         WordValue wordValue = new WordValue(wordSetValueString);
 
-        assertThat(wordValue.textRepresentation())
-                .isEqualTo(textRepresentation);
+        assertThat(wordValue.toLineValue())
+                .isEqualTo(lineValue);
     }
 
     private static Stream<Arguments> provideTestData() {
