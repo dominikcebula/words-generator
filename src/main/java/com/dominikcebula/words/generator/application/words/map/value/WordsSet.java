@@ -1,4 +1,4 @@
-package com.dominikcebula.words.generator.application.domain;
+package com.dominikcebula.words.generator.application.words.map.value;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

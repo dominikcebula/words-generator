@@ -1,6 +1,10 @@
-package com.dominikcebula.words.generator.application.words.query;
+package com.dominikcebula.words.generator.application.query;
 
-import com.dominikcebula.words.generator.application.domain.*;
+import com.dominikcebula.words.generator.application.words.map.WordsMap;
+import com.dominikcebula.words.generator.application.words.map.key.WordKey;
+import com.dominikcebula.words.generator.application.words.map.key.WordKeyFactory;
+import com.dominikcebula.words.generator.application.words.map.value.WordValue;
+import com.dominikcebula.words.generator.application.words.map.value.WordsSet;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

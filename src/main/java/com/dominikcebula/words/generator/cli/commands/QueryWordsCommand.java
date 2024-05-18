@@ -1,8 +1,8 @@
 package com.dominikcebula.words.generator.cli.commands;
 
 import com.dominikcebula.words.generator.application.dataset.loader.DataSetLoader;
-import com.dominikcebula.words.generator.application.domain.WordsMap;
-import com.dominikcebula.words.generator.application.words.query.WordsQuery;
+import com.dominikcebula.words.generator.application.query.WordsQuery;
+import com.dominikcebula.words.generator.application.words.map.WordsMap;
 import com.dominikcebula.words.generator.io.FileInputReader;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

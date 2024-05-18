@@ -1,5 +1,7 @@
-package com.dominikcebula.words.generator.application.domain;
+package com.dominikcebula.words.generator.application.words.map;
 
+import com.dominikcebula.words.generator.application.words.map.key.WordKey;
+import com.dominikcebula.words.generator.application.words.map.value.WordValue;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

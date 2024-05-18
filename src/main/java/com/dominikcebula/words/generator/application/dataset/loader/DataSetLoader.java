@@ -1,9 +1,9 @@
 package com.dominikcebula.words.generator.application.dataset.loader;
 
 import com.dominikcebula.words.generator.application.dataset.loader.port.InputDataSetReader;
-import com.dominikcebula.words.generator.application.domain.WordKey;
-import com.dominikcebula.words.generator.application.domain.WordValue;
-import com.dominikcebula.words.generator.application.domain.WordsMap;
+import com.dominikcebula.words.generator.application.words.map.WordsMap;
+import com.dominikcebula.words.generator.application.words.map.key.WordKey;
+import com.dominikcebula.words.generator.application.words.map.value.WordValue;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

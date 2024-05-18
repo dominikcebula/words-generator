@@ -1,4 +1,4 @@
-package com.dominikcebula.words.generator.application.domain;
+package com.dominikcebula.words.generator.application.words.map.key;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

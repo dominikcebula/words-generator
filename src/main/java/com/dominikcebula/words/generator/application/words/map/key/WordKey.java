@@ -1,4 +1,4 @@
-package com.dominikcebula.words.generator.application.domain;
+package com.dominikcebula.words.generator.application.words.map.key;
 
 public record WordKey(String value) {
     private static final String KEY_PREFIX = "K ";
@@ -14,7 +14,7 @@ public record WordKey(String value) {
         return new WordKey(lineValue.substring(KEY_PREFIX.length()));
     }
 
-    String toLineValue() {
+    public String toLineValue() {
         return KEY_PREFIX + value;
     }
 }

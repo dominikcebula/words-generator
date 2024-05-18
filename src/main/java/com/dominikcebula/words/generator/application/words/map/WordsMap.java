@@ -1,4 +1,8 @@
-package com.dominikcebula.words.generator.application.domain;
+package com.dominikcebula.words.generator.application.words.map;
+
+import com.dominikcebula.words.generator.application.words.map.key.WordKey;
+import com.dominikcebula.words.generator.application.words.map.value.WordValue;
+import com.dominikcebula.words.generator.application.words.map.value.WordsSet;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

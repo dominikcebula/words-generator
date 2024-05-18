@@ -1,4 +1,4 @@
-package com.dominikcebula.words.generator.application.domain;
+package com.dominikcebula.words.generator.application.words.map.value;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -62,8 +62,10 @@ class WordsSetTest {
         wordsSet.add(WORD_3);
 
         assertThat(wordsSet.toLineValue())
-                .isEqualTo("V compliance\n" +
-                        "V scalability\n" +
-                        "V logistics\n");
+                .isEqualTo("""
+                        V compliance
+                        V scalability
+                        V logistics
+                        """);
     }
 }

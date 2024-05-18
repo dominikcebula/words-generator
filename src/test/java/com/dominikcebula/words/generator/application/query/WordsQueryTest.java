@@ -1,8 +1,8 @@
-package com.dominikcebula.words.generator.application.words.query;
+package com.dominikcebula.words.generator.application.query;
 
-import com.dominikcebula.words.generator.application.domain.WordKey;
-import com.dominikcebula.words.generator.application.domain.WordValue;
-import com.dominikcebula.words.generator.application.domain.WordsMap;
+import com.dominikcebula.words.generator.application.words.map.WordsMap;
+import com.dominikcebula.words.generator.application.words.map.key.WordKey;
+import com.dominikcebula.words.generator.application.words.map.value.WordValue;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

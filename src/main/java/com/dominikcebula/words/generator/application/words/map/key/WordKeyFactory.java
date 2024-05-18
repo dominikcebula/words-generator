@@ -1,4 +1,4 @@
-package com.dominikcebula.words.generator.application.domain;
+package com.dominikcebula.words.generator.application.words.map.key;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
