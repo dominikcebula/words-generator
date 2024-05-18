@@ -1,6 +1,6 @@
 package com.dominikcebula.words.generator.application.dataset.generator;
 
-import com.dominikcebula.words.generator.io.InMemoryInputWordsReader;
+import com.dominikcebula.words.generator.io.InMemoryInputReader;
 import com.dominikcebula.words.generator.io.InMemoryOutputDatasetWriter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,19 +12,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class DataSetGeneratorTest {
     private DataSetGenerator dataSetGenerator;
-    private InMemoryInputWordsReader inMemoryInputWordsReader;
+    private InMemoryInputReader inMemoryInputReader;
     private InMemoryOutputDatasetWriter inMemoryOutputDatasetWriter;
 
     @BeforeEach
     public void setUp() {
-        inMemoryInputWordsReader = new InMemoryInputWordsReader();
+        inMemoryInputReader = new InMemoryInputReader();
         inMemoryOutputDatasetWriter = new InMemoryOutputDatasetWriter();
-        dataSetGenerator = new DataSetGenerator(inMemoryInputWordsReader, inMemoryOutputDatasetWriter);
+        dataSetGenerator = new DataSetGenerator(inMemoryInputReader, inMemoryOutputDatasetWriter);
     }
 
     @Test
     void shouldGenerateDataSetForOneWord() {
-        inMemoryInputWordsReader.setData(Collections.singletonList("revenue"));
+        inMemoryInputReader.setData(Collections.singletonList("revenue"));
 
         dataSetGenerator.generate();
 
@@ -37,7 +37,7 @@ class DataSetGeneratorTest {
 
     @Test
     void shouldGenerateDataSetForMultipleWords() {
-        inMemoryInputWordsReader.setData(List.of(
+        inMemoryInputReader.setData(List.of(
                 "revenue",
                 "marketing",
                 "sale",
@@ -78,7 +78,7 @@ class DataSetGeneratorTest {
 
     @Test
     void shouldDoNothingForEmptyInput() {
-        inMemoryInputWordsReader.setData(Collections.emptyList());
+        inMemoryInputReader.setData(Collections.emptyList());
 
         dataSetGenerator.generate();
 

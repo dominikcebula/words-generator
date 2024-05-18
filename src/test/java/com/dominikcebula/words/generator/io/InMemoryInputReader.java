@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class InMemoryInputWordsReader implements InputWordsReader {
+public class InMemoryInputReader implements InputWordsReader {
     private Iterator<String> dataIterator = Collections.emptyIterator();
 
     public void setData(List<String> data) {
