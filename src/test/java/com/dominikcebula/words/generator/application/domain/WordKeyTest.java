@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class WordKeyTest {
     @ParameterizedTest
     @MethodSource("wordKeysWithLineValues")
-    void shouldCreateToLineValue(String keyValue, String lineValue) {
+    void shouldCreateLineValue(String keyValue, String lineValue) {
         WordKey wordKey = new WordKey(keyValue);
 
         assertThat(wordKey.toLineValue())
@@ -30,8 +30,8 @@ class WordKeyTest {
     }
 
     @ParameterizedTest
-    @MethodSource("wordLineValues")
-    void shouldDetectWordKeys(String lineValue, boolean expectedIsLineValue) {
+    @MethodSource("wordKeyLineValues")
+    void shouldDetectWordKey(String lineValue, boolean expectedIsLineValue) {
         assertThat(WordKey.isWordKeyLine(lineValue))
                 .isEqualTo(expectedIsLineValue);
     }
@@ -52,7 +52,7 @@ class WordKeyTest {
         );
     }
 
-    private static Stream<Arguments> wordLineValues() {
+    private static Stream<Arguments> wordKeyLineValues() {
         return Stream.of(
                 Arguments.of("K 1c1g2i1l1o2s1t", true),
                 Arguments.of("K 3e1n1r1u1v", true),
