@@ -19,6 +19,17 @@ For example, given following letters `glnsu`, it is possible to create two words
 * AssertJ
 * Maven
 
+# How this application works?
+
+Application uses [List of English Words](https://github.com/dwyl/english-words) to create a queryable dataset that is
+used to query for english words possible to generate from a given set of characters.
+
+[List of English Words](https://github.com/dwyl/english-words) are kept under `data/words_alpha.txt`. This is a text
+file that contains 370k english words.
+
+`data/words_alpha.txt` is then processed and saved as `data/words_alpha_dataset.txt` in a format suitable for querying
+for words based on character set.
+
 # Building project
 
 Execute the below command to compile and build project:
