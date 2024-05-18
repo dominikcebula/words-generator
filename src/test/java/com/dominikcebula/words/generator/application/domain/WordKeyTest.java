@@ -1,5 +1,6 @@
 package com.dominikcebula.words.generator.application.domain;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -7,6 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class WordKeyTest {
     @ParameterizedTest
@@ -32,6 +34,14 @@ class WordKeyTest {
     void shouldDetectWordKeys(String lineValue, boolean expectedIsLineValue) {
         assertThat(WordKey.isWordKeyLine(lineValue))
                 .isEqualTo(expectedIsLineValue);
+    }
+
+    @Test
+    void shouldThrowExceptionWhenTryingToCreateWordKeyFromIncorrectLineValue() {
+        IllegalArgumentException thrownException = assertThrows(IllegalArgumentException.class, () -> WordKey.fromLineValue("abc"));
+
+        assertThat(thrownException.getMessage())
+                .isEqualTo("Cannot create word key from line value abc");
     }
 
     private static Stream<Arguments> wordKeysWithLineValues() {
