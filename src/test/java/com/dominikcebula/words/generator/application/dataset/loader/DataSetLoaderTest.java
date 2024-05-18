@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DataSetLoaderTest {
     private InMemoryInputReader inputReader;
@@ -81,5 +82,19 @@ class DataSetLoaderTest {
                 );
         assertThat(wordsSet3.getWordValues())
                 .isEmpty();
+    }
+
+    @Test
+    void shouldThrowExceptionOnValueWithoutKeyInInput() {
+        inputReader.setData(List.of(
+                "V abjunct",
+                "K 1a1b1l",
+                "V abl"
+        ));
+
+        IllegalStateException thrownException = assertThrows(IllegalStateException.class, () -> dataSetLoader.load());
+
+        assertThat(thrownException.getMessage())
+                .isEqualTo("Tried adding word value without having key yet");
     }
 }
