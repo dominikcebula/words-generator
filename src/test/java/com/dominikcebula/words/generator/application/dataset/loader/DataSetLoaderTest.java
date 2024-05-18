@@ -12,14 +12,14 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class PreprocessedDataSetLoaderTest {
+class DataSetLoaderTest {
     private InMemoryInputReader inputReader;
-    private PreprocessedDataSetLoader dataSetLoader;
+    private DataSetLoader dataSetLoader;
 
     @BeforeEach
     public void setUp() {
         inputReader = new InMemoryInputReader();
-        dataSetLoader = new PreprocessedDataSetLoader(inputReader);
+        dataSetLoader = new DataSetLoader(inputReader);
     }
 
     @Test

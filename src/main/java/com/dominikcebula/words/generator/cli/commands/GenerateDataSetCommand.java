@@ -32,9 +32,9 @@ public class GenerateDataSetCommand implements Runnable {
         try (var inputWordsReader = new FileInputReader(wordsFilePath)) {
             var outputDatasetWriter = new FileOutputDatasetWriter(dataSetOutputFilePath);
 
-            var preprocessedDataSetGenerator = new DataSetGenerator(inputWordsReader, outputDatasetWriter);
+            var dataSetGenerator = new DataSetGenerator(inputWordsReader, outputDatasetWriter);
 
-            preprocessedDataSetGenerator.generate();
+            dataSetGenerator.generate();
         }
 
         log.info("Finished generating preprocessed dataset.");

@@ -1,6 +1,6 @@
 package com.dominikcebula.words.generator.cli.commands;
 
-import com.dominikcebula.words.generator.application.dataset.loader.PreprocessedDataSetLoader;
+import com.dominikcebula.words.generator.application.dataset.loader.DataSetLoader;
 import com.dominikcebula.words.generator.application.domain.WordsMap;
 import com.dominikcebula.words.generator.application.words.query.WordsQuery;
 import com.dominikcebula.words.generator.io.FileInputReader;
@@ -24,8 +24,8 @@ public class QueryWordsCommand implements Runnable {
     public void run() {
         log.info("Loading preprocessed words dataset...");
         try (var inputDataSetReader = new FileInputReader(dataSetFilePath)) {
-            var preprocessedDataSetLoader = new PreprocessedDataSetLoader(inputDataSetReader);
-            WordsMap wordsMap = preprocessedDataSetLoader.load();
+            var dataSetLoader = new DataSetLoader(inputDataSetReader);
+            WordsMap wordsMap = dataSetLoader.load();
             log.info("Loaded preprocessed words dataset.");
 
             log.info("Querying for possible words...");

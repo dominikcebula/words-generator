@@ -7,7 +7,7 @@ import com.dominikcebula.words.generator.application.domain.WordsMap;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class PreprocessedDataSetLoader {
+public class DataSetLoader {
     private final InputDataSetReader inputDataSetReader;
 
     public WordsMap load() {
