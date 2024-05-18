@@ -6,7 +6,77 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class WordsMapTest {
     @Test
-    void shouldReturnSingleEntry() {
+    void shouldReturnSingleValue() {
+        WordKey wordKey = new WordKey("1c1g2i1l1o2s1t");
+        WordValue wordValue = new WordValue("logistics");
+        WordsMap wordsMap = new WordsMap();
+
+        wordsMap.add(wordKey, wordValue);
+
+        assertThat(wordsMap.get(wordKey).getWordValues())
+                .containsOnly(wordValue);
+    }
+
+    @Test
+    void shouldReturnMultipleValuesForSingleKey() {
+        WordKey wordKey = new WordKey("1c1g2i1l1o2s1t");
+        WordValue wordValue1 = new WordValue("logistics");
+        WordValue wordValue2 = new WordValue("scalability");
+        WordValue wordValue3 = new WordValue("compliance");
+        WordsMap wordsMap = new WordsMap();
+
+        wordsMap.add(wordKey, wordValue1);
+        wordsMap.add(wordKey, wordValue2);
+        wordsMap.add(wordKey, wordValue3);
+
+        assertThat(wordsMap.get(wordKey).getWordValues())
+                .containsOnly(wordValue1, wordValue2, wordValue3);
+    }
+
+    @Test
+    void shouldReturnMultipleValuesForMultipleKeys() {
+        WordKey wordKey1 = new WordKey("1c1g2i1l1o2s1t");
+        WordValue wordValue11 = new WordValue("logistics");
+        WordValue wordValue12 = new WordValue("scalability");
+        WordValue wordValue13 = new WordValue("compliance");
+
+        WordKey wordKey2 = new WordKey("1a1c1e1h1i1n1s1t");
+        WordValue wordValue21 = new WordValue("asthenic");
+        WordValue wordValue22 = new WordValue("chanties");
+
+        WordKey wordKey3 = new WordKey("1a1c1e1h1i1n2s1t");
+        WordValue wordValue31 = new WordValue("asthenics");
+
+        WordsMap wordsMap = new WordsMap();
+
+        wordsMap.add(wordKey1, wordValue11);
+        wordsMap.add(wordKey1, wordValue12);
+        wordsMap.add(wordKey1, wordValue13);
+
+        wordsMap.add(wordKey2, wordValue21);
+        wordsMap.add(wordKey2, wordValue22);
+
+        wordsMap.add(wordKey3, wordValue31);
+
+        assertThat(wordsMap.get(wordKey1).getWordValues())
+                .containsExactly(wordValue11, wordValue12, wordValue13);
+        assertThat(wordsMap.get(wordKey2).getWordValues())
+                .containsExactly(wordValue21, wordValue22);
+        assertThat(wordsMap.get(wordKey3).getWordValues())
+                .containsExactly(wordValue31);
+    }
+
+    @Test
+    void shouldReturnEmptySetForNonExistingKey() {
+        WordKey wordKey = new WordKey("1c1g2i1l1o2s1t");
+        WordsMap wordsMap = new WordsMap();
+
+        assertThat(wordsMap.get(wordKey).getWordValues())
+                .isEmpty();
+    }
+
+    @Test
+    void shouldReturnSingleLineValue() {
         WordsMap wordsMap = new WordsMap();
 
         wordsMap.add(new WordKey("1c1g2i1l1o2s1t"), new WordValue("logistics"));
@@ -19,7 +89,7 @@ class WordsMapTest {
     }
 
     @Test
-    void shouldReturnMultipleEntryForSingleKey() {
+    void shouldReturnMultipleLinesValuesForSingleKey() {
         WordsMap wordsMap = new WordsMap();
 
         wordsMap.add(new WordKey("1a2b3c"), new WordValue("abbccc"));
@@ -36,7 +106,7 @@ class WordsMapTest {
     }
 
     @Test
-    void shouldReturnSingleKeyAndSingleValue() {
+    void shouldReturnSingleKeyAndSingleValueLinesValues() {
         WordsMap wordsMap = new WordsMap();
 
         wordsMap.add(new WordKey("1a"), new WordValue("a"));
@@ -55,7 +125,7 @@ class WordsMapTest {
     }
 
     @Test
-    void shouldReturnMultipleValues() {
+    void shouldReturnMultipleLinesValues() {
         WordsMap wordsMap = new WordsMap();
 
         wordsMap.add(new WordKey("1a2b"), new WordValue("abb"));
