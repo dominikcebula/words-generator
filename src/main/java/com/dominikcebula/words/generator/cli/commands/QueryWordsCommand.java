@@ -16,9 +16,9 @@ import static picocli.CommandLine.Option;
 @Command(name = "query-words", description = "Queries for possible words that can be created from a given set of characters")
 @Slf4j
 public class QueryWordsCommand implements Runnable {
-    @Option(names = "-data-set-file-path", description = "Path to where preprocessed data set is stored")
+    @Option(names = "-data-set-file-path", description = "Path to where preprocessed data set is stored", required = true)
     private Path dataSetFilePath;
-    @Option(names = "-characters", description = "Characters available to build possible words")
+    @Option(names = "-characters", description = "Characters available to build possible words", required = true)
     private String characters;
 
     @SneakyThrows

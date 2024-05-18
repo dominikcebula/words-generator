@@ -21,7 +21,7 @@ public class GenerateDataSetCommand implements Runnable {
 
     @Option(names = "-words-file-path", description = "Path of input text file with words dictionary", required = true)
     private Path wordsFilePath;
-    @Option(names = "-data-set-output-file-path", description = "Path to where preprocessed data set will be stored")
+    @Option(names = "-data-set-output-file-path", description = "Path to where preprocessed data set will be stored", required = true)
     private Path dataSetOutputFilePath;
 
     @SneakyThrows
