@@ -13,4 +13,15 @@ public class WordsSet {
     public Set<WordValue> getWordValues() {
         return words;
     }
+
+    public String toLineValue() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (WordValue wordValue : words) {
+            stringBuilder.append(wordValue.toLineValue());
+            stringBuilder.append("\n");
+        }
+
+        return stringBuilder.toString();
+    }
 }

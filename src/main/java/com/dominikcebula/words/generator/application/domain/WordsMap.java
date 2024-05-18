@@ -22,10 +22,8 @@ public class WordsMap {
             stringBuilder.append(wordKey.toLineValue());
             stringBuilder.append("\n");
 
-            for (WordValue wordValue : wordsData.get(wordKey).getWordValues()) {
-                stringBuilder.append(wordValue.toLineValue());
-                stringBuilder.append("\n");
-            }
+            WordsSet wordsSet = wordsData.get(wordKey);
+            stringBuilder.append(wordsSet.toLineValue());
         }
 
         return stringBuilder.toString();
