@@ -2,7 +2,7 @@ package com.dominikcebula.words.generator.cli.commands;
 
 import com.dominikcebula.words.generator.application.dataset.loader.PreprocessedDataSetLoader;
 import com.dominikcebula.words.generator.application.domain.WordsMap;
-import com.dominikcebula.words.generator.application.words.generator.WordsGenerator;
+import com.dominikcebula.words.generator.application.words.query.WordsQuery;
 import com.dominikcebula.words.generator.cli.io.ConsoleOutputDataDisplay;
 import com.dominikcebula.words.generator.io.FileInputReader;
 import lombok.SneakyThrows;
@@ -30,8 +30,8 @@ public class QueryWordsCommand implements Runnable {
 
             log.info("Querying for possible words...");
             var consoleOutputDataDisplay = new ConsoleOutputDataDisplay();
-            var wordsGenerator = new WordsGenerator(wordsMap, consoleOutputDataDisplay);
-            wordsGenerator.generatePossibleWords(characters);
+            var wordsQuery = new WordsQuery(wordsMap, consoleOutputDataDisplay);
+            wordsQuery.queryPossibleWords(characters);
             log.info("Finished Querying for possible words.");
         }
     }
