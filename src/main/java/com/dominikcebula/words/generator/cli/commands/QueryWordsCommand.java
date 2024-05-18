@@ -6,17 +6,19 @@ import com.dominikcebula.words.generator.application.words.map.WordsMap;
 import com.dominikcebula.words.generator.io.FileInputReader;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import picocli.CommandLine;
 
 import java.nio.file.Path;
 import java.util.List;
 
-@CommandLine.Command(name = "query-words", description = "Queries for possible words that can be created from a given set of characters")
+import static picocli.CommandLine.Command;
+import static picocli.CommandLine.Option;
+
+@Command(name = "query-words", description = "Queries for possible words that can be created from a given set of characters")
 @Slf4j
 public class QueryWordsCommand implements Runnable {
-    @CommandLine.Option(names = "-data-set-file-path", description = "Path to where preprocessed data set is stored")
+    @Option(names = "-data-set-file-path", description = "Path to where preprocessed data set is stored")
     private Path dataSetFilePath;
-    @CommandLine.Option(names = "-characters", description = "Characters available to build possible words")
+    @Option(names = "-characters", description = "Characters available to build possible words")
     private String characters;
 
     @SneakyThrows
