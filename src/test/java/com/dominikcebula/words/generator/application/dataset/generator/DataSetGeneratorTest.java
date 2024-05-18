@@ -10,8 +10,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class PreprocessedDataSetGeneratorTest {
-    private PreprocessedDataSetGenerator preprocessedDataSetGenerator;
+class DataSetGeneratorTest {
+    private DataSetGenerator dataSetGenerator;
     private InMemoryInputWordsReader inMemoryInputWordsReader;
     private InMemoryOutputDatasetWriter inMemoryOutputDatasetWriter;
 
@@ -19,14 +19,14 @@ class PreprocessedDataSetGeneratorTest {
     public void setUp() {
         inMemoryInputWordsReader = new InMemoryInputWordsReader();
         inMemoryOutputDatasetWriter = new InMemoryOutputDatasetWriter();
-        preprocessedDataSetGenerator = new PreprocessedDataSetGenerator(inMemoryInputWordsReader, inMemoryOutputDatasetWriter);
+        dataSetGenerator = new DataSetGenerator(inMemoryInputWordsReader, inMemoryOutputDatasetWriter);
     }
 
     @Test
     void shouldGenerateDataSetForOneWord() {
         inMemoryInputWordsReader.setData(Collections.singletonList("revenue"));
 
-        preprocessedDataSetGenerator.generate();
+        dataSetGenerator.generate();
 
         assertThat(inMemoryOutputDatasetWriter.getContent())
                 .isEqualTo("""
@@ -51,7 +51,7 @@ class PreprocessedDataSetGeneratorTest {
                 "rane"
         ));
 
-        preprocessedDataSetGenerator.generate();
+        dataSetGenerator.generate();
 
         assertThat(inMemoryOutputDatasetWriter.getContent())
                 .isEqualTo("""
@@ -80,7 +80,7 @@ class PreprocessedDataSetGeneratorTest {
     void shouldDoNothingForEmptyInput() {
         inMemoryInputWordsReader.setData(Collections.emptyList());
 
-        preprocessedDataSetGenerator.generate();
+        dataSetGenerator.generate();
 
         assertThat(inMemoryOutputDatasetWriter.getContent())
                 .isEmpty();

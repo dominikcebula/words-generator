@@ -1,6 +1,7 @@
 package com.dominikcebula.words.generator.cli.parser;
 
-import com.dominikcebula.words.generator.cli.commands.GeneratePreprocessedDataSetCommand;
+import com.dominikcebula.words.generator.cli.commands.GenerateDataSetCommand;
+import com.dominikcebula.words.generator.cli.commands.QueryWordsCommand;
 import com.dominikcebula.words.generator.cli.common.HelpOption;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Mixin;
@@ -8,7 +9,7 @@ import picocli.CommandLine.Mixin;
 import static picocli.CommandLine.Option;
 
 @Command(
-        subcommands = {GeneratePreprocessedDataSetCommand.class},
+        subcommands = {GenerateDataSetCommand.class, QueryWordsCommand.class},
         versionProvider = VersionProvider.class
 )
 public class CommandLineParser {

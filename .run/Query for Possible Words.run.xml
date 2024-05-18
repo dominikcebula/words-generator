@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="Query for Possible Words" type="Application" factoryName="Application">
+        <option name="MAIN_CLASS_NAME" value="com.dominikcebula.words.generator.cli.Application"/>
+        <module name="words-generator"/>
+        <option name="PROGRAM_PARAMETERS"
+                value="query-words -data-set-file-path data/words_alpha_dataset.txt -characters atters"/>
+        <method v="2">
+            <option name="Make" enabled="true"/>
+        </method>
+    </configuration>
+</component>

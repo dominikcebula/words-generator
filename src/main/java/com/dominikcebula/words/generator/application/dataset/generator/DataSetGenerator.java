@@ -9,7 +9,7 @@ import com.dominikcebula.words.generator.application.domain.WordsMap;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class PreprocessedDataSetGenerator {
+public class DataSetGenerator {
     private final WordKeyFactory wordKeyFactory = new WordKeyFactory();
 
     private final InputWordsReader inputWordsReader;
@@ -18,8 +18,8 @@ public class PreprocessedDataSetGenerator {
     public void generate() {
         WordsMap wordsMap = new WordsMap();
 
-        while (inputWordsReader.hasNextWord()) {
-            String word = inputWordsReader.getNextWord();
+        while (inputWordsReader.hasNextLine()) {
+            String word = inputWordsReader.getNextLine();
 
             WordKey wordKey = wordKeyFactory.createFromWord(word);
 

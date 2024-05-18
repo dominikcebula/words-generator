@@ -14,12 +14,12 @@ public class InMemoryInputWordsReader implements InputWordsReader {
     }
 
     @Override
-    public boolean hasNextWord() {
+    public boolean hasNextLine() {
         return dataIterator.hasNext();
     }
 
     @Override
-    public String getNextWord() {
+    public String getNextLine() {
         return dataIterator.next();
     }
 }

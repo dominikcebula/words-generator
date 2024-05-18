@@ -1,6 +1,7 @@
 package com.dominikcebula.words.generator.io;
 
 import com.dominikcebula.words.generator.application.dataset.generator.port.InputWordsReader;
+import com.dominikcebula.words.generator.application.dataset.loader.port.InputDataSetReader;
 import lombok.SneakyThrows;
 
 import java.io.BufferedReader;
@@ -8,22 +9,22 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.nio.file.Path;
 
-public class FileInputWordsReader implements InputWordsReader, AutoCloseable {
+public class FileInputReader implements InputWordsReader, InputDataSetReader, AutoCloseable {
     private final BufferedReader bufferedReader;
 
-    public FileInputWordsReader(Path wordsFilePath) throws FileNotFoundException {
-        bufferedReader = new BufferedReader(new FileReader(wordsFilePath.toFile()));
+    public FileInputReader(Path filePath) throws FileNotFoundException {
+        bufferedReader = new BufferedReader(new FileReader(filePath.toFile()));
     }
 
     @SneakyThrows
     @Override
-    public boolean hasNextWord() {
+    public boolean hasNextLine() {
         return bufferedReader.ready();
     }
 
     @SneakyThrows
     @Override
-    public String getNextWord() {
+    public String getNextLine() {
         return bufferedReader.readLine();
     }
 
