@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Optional;
 
@@ -31,29 +32,21 @@ class ApplicationTest {
 
         runWithArgs("generate-dataset -words-file-path " + wordsAlphaSamplePath + " -data-set-output-file-path " + datasetOutputPath);
 
-        assertProducedDataSetContent(datasetOutputPath,
-                """
-                        K 1a1d1e1i1n1o1r1s
-                        V aneroids
-                        V donaries
-                        V saronide
-                        K 1a1e1i1n2s
-                        V anesis
-                        V anises
-                        V anseis
-                        V sanies
-                        V sansei
-                        V sasine
-                        K 1a2b1d1e1l1r
-                        V dabbler
-                        V drabble
-                        V rabbled
-                        """);
+        assertProducedDataSetContent(datasetOutputPath, getWordsAlphaSampleDataContent());
         assertExitCode(0);
     }
 
     private String getWordsAlphaSamplePath() {
         return ApplicationTest.class.getResource("/words_alpha_sample.txt")
+                .getFile();
+    }
+
+    private String getWordsAlphaSampleDataContent() throws IOException {
+        return Files.readString(Path.of(getWordsAlphaSampleDataPath()));
+    }
+
+    private String getWordsAlphaSampleDataPath() {
+        return ApplicationTest.class.getResource("/words_alpha_sample_dataset.txt")
                 .getFile();
     }
 
